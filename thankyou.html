@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>You're Registered 🎉</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #f7f9fc;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+/* Background */
+body::before,
+body::after {
+    content: "";
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    filter: blur(100px);
+    z-index: -1;
+}
+
+body::before {
+    background: linear-gradient(135deg, #84fab0, #8fd3f4);
+    top: -60px;
+    left: -60px;
+}
+
+body::after {
+    background: linear-gradient(135deg, #fccb90, #d57eeb);
+    bottom: -60px;
+    right: -60px;
+}
+
+/* Card */
+.card {
+    max-width: 480px;
+    margin: 60px auto;
+    background: #fff;
+    padding: 25px;
+    border-radius: 18px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+}
+
+/* Heading */
+h1 {
+    font-size: 26px;
+    margin-bottom: 10px;
+}
+
+/* Button */
+.btn {
+    display: inline-block;
+    margin-top: 18px;
+    padding: 14px 28px;
+    background: #4dabf7;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #339af0;
+}
+
+/* Info box */
+.info {
+    margin-top: 12px;
+    background: #f1f3f5;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+/* Countdown */
+.countdown {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 18px;
+    flex-wrap: wrap;
+}
+
+.time-box {
+    min-width: 60px;
+}
+
+.time-box span {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.time-box p {
+    font-size: 0.7rem;
+    opacity: 0.7;
+}
+
+/* Mobile */
+@media (max-width: 500px) {
+    .card {
+        margin: 40px 10px;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 22px;
+    }
+
+    .btn {
+        width: 100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<h1>🎉 You're Registered!</h1>
+
+<p style="font-size:14px; line-height:1.5;">
+📩 Webinar joining details will be sent to your email before the session starts.<br><br>
+Or you can directly join using the link below:
+</p>
+
+<!-- JOIN BUTTON -->
+<a href="https://meet.google.com/abc-defg-hij" class="btn" target="_blank">
+🎥 Join Webinar
+</a>
+
+<div class="info">
+📅 30 June | ⏰ 8:00 PM <br>
+⚠ Please join 5 minutes early
+</div>
+
+<div class="info">
+🎁 Free Certificate will be provided after completion
+</div>
+
+<!-- Countdown -->
+<div class="countdown">
+    <div class="time-box"><span id="days">00</span><p>Days</p></div>
+    <div class="time-box"><span id="hours">00</span><p>Hours</p></div>
+    <div class="time-box"><span id="minutes">00</span><p>Min</p></div>
+    <div class="time-box"><span id="seconds">00</span><p>Sec</p></div>
+</div>
+
+<p style="margin-top:15px; font-size:13px;">
+📌 Save this page or bookmark it for easy access
+</p>
+
+</div>
+
+<script>
+// Countdown
+const launchDate = new Date("June 30, 2026 20:00:00").getTime();
+
+setInterval(() => {
+    const now = new Date().getTime();
+    const distance = launchDate - now;
+
+    if (distance < 0) return;
+
+    document.getElementById("days").innerHTML =
+        Math.floor(distance / (1000 * 60 * 60 * 24));
+
+    document.getElementById("hours").innerHTML =
+        Math.floor((distance / (1000 * 60 * 60)) % 24);
+
+    document.getElementById("minutes").innerHTML =
+        Math.floor((distance / (1000 * 60)) % 60);
+
+    document.getElementById("seconds").innerHTML =
+        Math.floor((distance / 1000) % 60);
+
+}, 1000);
+</script>
+
+</body>
+</html>
